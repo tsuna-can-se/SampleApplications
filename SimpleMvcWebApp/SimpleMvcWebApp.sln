@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C773B023-2FD5-4775-9663-8C4A0842E541}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMvcWebApp", "src\SimpleMvcWebApp\SimpleMvcWebApp.csproj", "{18F198EB-A905-405B-A41D-DAC66F0B388E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqls", "sqls", "{417534C8-F471-4EB2-A4A1-7F5A670B24CD}"
+	ProjectSection(SolutionItems) = preProject
+		sqls\CreateTable.sql = sqls\CreateTable.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18F198EB-A905-405B-A41D-DAC66F0B388E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F198EB-A905-405B-A41D-DAC66F0B388E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F198EB-A905-405B-A41D-DAC66F0B388E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F198EB-A905-405B-A41D-DAC66F0B388E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18F198EB-A905-405B-A41D-DAC66F0B388E} = {C773B023-2FD5-4775-9663-8C4A0842E541}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B55F21B-0510-4D41-A216-CD02D70A1492}
+	EndGlobalSection
+EndGlobal
