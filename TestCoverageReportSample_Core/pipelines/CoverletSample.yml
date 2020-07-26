@@ -4,7 +4,7 @@ variables:
   System.Debug: True
   BuildConfiguration: 'Debug'
   TargetSolution: '$(Build.SourcesDirectory)\TestCoverageReportSample_Core\TestCoverageReportSample.sln'
-  TestProjects: '$(Build.SourcesDirectory)\**\test\**\Test.*.csproj'
+  TestProjects: '$(Build.SourcesDirectory)\TestCoverageReportSample_Core\test\**\Test.*.csproj'
 
 pool:
   vmImage: 'windows-latest'
