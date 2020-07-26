@@ -8,6 +8,7 @@ https://tsuna-can.hateblo.jp/
 
 ## サンプルの概要
 
-|ディレクトリ                        |概要|
-|-----------------------------------|----|
+|ディレクトリ                                                    |概要|
+|---------------------------------------------------------------|----|
 |[SimpleMvcWebApp](/SimpleMvcWebApp)|Entity Frameworkを用いて簡単なデータベースアクセスを行うASP\.NET MVC 5.2.7 のサンプルアプリケーションです。|
+|[TestCoverageReportSample_Core](/TestCoverageReportSample_Core)|\.NET Core 3.1 × MSTestのサンプルアプリケーションです。|

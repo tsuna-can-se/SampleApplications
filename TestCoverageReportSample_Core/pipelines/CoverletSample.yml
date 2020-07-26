@@ -1,0 +1,41 @@
+trigger: none
+
+variables:
+  System.Debug: True
+  BuildConfiguration: 'Debug'
+  TargetSolution: '$(Build.SourcesDirectory)\TestCoverageReportSample_Core\TestCoverageReportSample.sln'
+  TestProjects: '$(Build.SourcesDirectory)\**\test\**\Test.*.csproj'
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'NuGet パッケージの復元'
+  inputs:
+    command: 'restore'
+    projects: '$(TargetSolution)'
+    feedsToUse: 'select'
+- task: DotNetCoreCLI@2
+  displayName: 'アプリケーションのビルド'
+  inputs:
+    command: 'build'
+    projects: '$(TargetSolution)'
+    arguments: '--configuration $(BuildConfiguration)'  
+- task: DotNetCoreCLI@2
+  displayName: '単体テストの実行'
+  inputs:
+    command: 'test'
+    projects: '$(TestProjects)'
+    arguments: '--configuration $(BuildConfiguration) --collect "XPlat Code coverage" -- RunConfiguration.DisableAppDomain=true'  
+- task: reportgenerator@4
+  displayName: 'コードカバレッジレポートの作成'
+  inputs:
+    reports: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+    targetdir: '$(System.DefaultWorkingDirectory)\TestResults\Coverage\Reports'
+    reporttypes: 'Cobertura'
+- task: PublishCodeCoverageResults@1
+  displayName: 'コードカバレッジレポートの発行'
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)\TestResults\Coverage\Reports\Cobertura.xml'
