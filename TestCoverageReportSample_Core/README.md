@@ -5,3 +5,9 @@
 
 またリポジトリ内には Azure Pipelines で実行可能な YAML ファイルが含まれています。
 このビルドパイプラインでは、単体テストのカバレッジを [coverlet.collector](https://github.com/coverlet-coverage/coverlet) を用いて収集し、ビルドサマリーとして参照できるように構成しています。
+
+詳細は以下の記事を参照してください。
+
+Azure Pipelines のビルド結果画面にコードカバレッジの結果を表示する（.NET Core）
+
+https://tsuna-can.hateblo.jp/entry/2020/07/27/080000
