@@ -11,6 +11,7 @@
 
 |ディレクトリ                                                         |概要                                                                                                       |
 |---------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+|[ChangeTrackerConfirm](/ChangeTrackerConfirm)                        |Entity Framework Core の Change Tracker 確認サンプルです。                                                 |
 |[EfCoreStarterSample](/EfCoreStarterSample)                          |Entitf Framework Core でデータベースアクセスを行うコンソールアプリケーションのサンプルです。               |
 |[EfCoreStarterSample-AddMigration](/EfCoreStarterSample-AddMigration)|Entitf Framework Core で Migration を作成するサンプルです。                                                |
 |[SimpleMvcWebApp](/SimpleMvcWebApp)                                  |Entity Frameworkを用いて簡単なデータベースアクセスを行うASP\.NET MVC 5.2.7 のサンプルアプリケーションです。|
