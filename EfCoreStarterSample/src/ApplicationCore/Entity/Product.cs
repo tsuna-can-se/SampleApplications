@@ -1,13 +1,24 @@
-﻿namespace ApplicationCore.Entity
+﻿namespace ApplicationCore.Entity;
+
+public class Product
 {
-    public class Product
+    private ProductCategory? productCategory;
+
+    public long ProductId { get; set; }
+
+    public string ProductName { get; set; } = string.Empty;
+
+    public string? ProductDescription { get; set; }
+
+    public decimal? Price { get; set; }
+
+    public long ProcuctCategoryId { get; set; }
+
+    public byte[] RowVersion { get; set; } = Array.Empty<byte>();
+
+    public ProductCategory ProductCategory
     {
-        public long ProductId { get; set; }
-        public string ProductName { get; set; }
-        public string ProductDescription { get; set; }
-        public decimal Price { get; set; }
-        public long ProcuctCategoryId { get; set; }
-        public byte[] RowVersion { get; set; }
-        public ProductCategory ProductCategory { get; set; }
+        get => this.productCategory ?? throw new InvalidOperationException("Uninitialized property: " + nameof(ProductCategory));
+        set => this.productCategory = value;
     }
 }

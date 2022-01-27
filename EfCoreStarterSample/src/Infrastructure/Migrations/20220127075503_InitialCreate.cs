@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace Infrastructure.Migrations
 {
     public partial class InitialCreate : Migration
@@ -29,7 +31,7 @@ namespace Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     ProductDescription = table.Column<string>(type: "nvarchar(1024)", maxLength: 1024, nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,0)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,0)", nullable: true),
                     ProcuctCategoryId = table.Column<long>(type: "bigint", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
@@ -40,8 +42,7 @@ namespace Infrastructure.Migrations
                         name: "FK_Products_ProductCategories",
                         column: x => x.ProcuctCategoryId,
                         principalTable: "ProductCategories",
-                        principalColumn: "ProductCategoryId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "ProductCategoryId");
                 });
 
             migrationBuilder.InsertData(
