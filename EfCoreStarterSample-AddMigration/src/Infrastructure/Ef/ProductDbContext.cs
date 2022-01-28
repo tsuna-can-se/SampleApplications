@@ -1,9 +1,8 @@
-﻿using System;
-using ApplicationCore.Entity;
+﻿using ApplicationCore.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Ef
-{
+namespace Infrastructure.Ef;
+
 public class ProductDbContext : DbContext
 {
     public ProductDbContext()
@@ -14,8 +13,9 @@ public class ProductDbContext : DbContext
     {
     }
 
-    public DbSet<Product> Products { get; set; }
-    public DbSet<ProductCategory> ProductCategories { get; set; }
+    public DbSet<Product> Products => this.Set<Product>();
+
+    public DbSet<ProductCategory> ProductCategories => this.Set<ProductCategory>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -43,7 +43,7 @@ public class ProductDbContext : DbContext
 
             // 各カラムの制約条件、カラム名の設定
             entity.Property(product => product.Price)
-                .HasColumnType("decimal(18,0)");
+            .HasColumnType("decimal(18,0)");
             entity.Property(product => product.ProductName)
                     .HasColumnName("Name")
                     .HasMaxLength(256)
@@ -55,16 +55,16 @@ public class ProductDbContext : DbContext
 
             // 外部キー制約の設定
             entity.HasOne(product => product.ProductCategory)
-                    .WithMany(productCategory => productCategory.Products)
-                    .HasForeignKey(product => product.ProcuctCategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Products_ProductCategories");
+                .WithMany(productCategory => productCategory.Products)
+                .HasForeignKey(product => product.ProcuctCategoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Products_ProductCategories");
 
             // 行バージョンカラムの設定
             entity.Property(product => product.RowVersion)
-                    .IsRequired()
-                    .IsRowVersion()
-                    .IsConcurrencyToken();
+                .IsRequired()
+                .IsRowVersion()
+                .IsConcurrencyToken();
 
             // マスターデータの登録（Publisher の値を追加設定）
             entity.HasData(new Product { ProductId = 1, ProductName = "C#の本", ProcuctCategoryId = 1, Price = 2000, Publisher = "DOTNET" });
@@ -84,14 +84,14 @@ public class ProductDbContext : DbContext
 
             // 各カラムの制約条件、カラム名の設定
             entity.Property(productCategory => productCategory.Name)
-                .HasMaxLength(256)
-                .IsRequired();
+            .HasMaxLength(256)
+            .IsRequired();
 
             // 行バージョンカラムの設定
             entity.Property(Product => Product.RowVersion)
-                .IsRequired()
-                .IsRowVersion()
-                .IsConcurrencyToken();
+            .IsRequired()
+            .IsRowVersion()
+            .IsConcurrencyToken();
 
             // マスターデータの登録
             entity.HasData(new ProductCategory { ProductCategoryId = 1, Name = "本" });
@@ -99,5 +99,4 @@ public class ProductDbContext : DbContext
             entity.HasData(new ProductCategory { ProductCategoryId = 3, Name = "おもちゃ" });
         });
     }
-}
 }

@@ -7,28 +7,32 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    [Migration("20210711110140_AddPublisherColumn")]
-    partial class AddPublisherColumn
+    [Migration("20220127075503_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "6.0.0-preview.5.21301.9")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("ApplicationCore.Entity.Product", b =>
                 {
                     b.Property<long>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
-                    b.Property<decimal>("Price")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ProductId"), 1L, 1);
+
+                    b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,0)");
 
                     b.Property<long>("ProcuctCategoryId")
@@ -44,10 +48,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasColumnName("Name");
 
-                    b.Property<string>("Publisher")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
@@ -58,7 +58,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ProcuctCategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -67,7 +67,7 @@ namespace Infrastructure.Migrations
                             Price = 2000m,
                             ProcuctCategoryId = 1L,
                             ProductName = "C#の本",
-                            Publisher = "DOTNET"
+                            RowVersion = new byte[0]
                         },
                         new
                         {
@@ -75,7 +75,7 @@ namespace Infrastructure.Migrations
                             Price = 2200m,
                             ProcuctCategoryId = 1L,
                             ProductName = "Visual Studioの本",
-                            Publisher = "DOTNET"
+                            RowVersion = new byte[0]
                         },
                         new
                         {
@@ -83,7 +83,7 @@ namespace Infrastructure.Migrations
                             Price = 2500m,
                             ProcuctCategoryId = 1L,
                             ProductName = ".NETの本",
-                            Publisher = "DOTNET"
+                            RowVersion = new byte[0]
                         },
                         new
                         {
@@ -91,7 +91,7 @@ namespace Infrastructure.Migrations
                             Price = 150000m,
                             ProcuctCategoryId = 2L,
                             ProductName = "冷蔵庫",
-                            Publisher = "HUTABISHI"
+                            RowVersion = new byte[0]
                         },
                         new
                         {
@@ -99,7 +99,7 @@ namespace Infrastructure.Migrations
                             Price = 280m,
                             ProcuctCategoryId = 3L,
                             ProductName = "トランプ",
-                            Publisher = "HONTENDO"
+                            RowVersion = new byte[0]
                         });
                 });
 
@@ -107,8 +107,9 @@ namespace Infrastructure.Migrations
                 {
                     b.Property<long>("ProductCategoryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ProductCategoryId"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -123,23 +124,26 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("ProductCategoryId");
 
-                    b.ToTable("ProductCategories");
+                    b.ToTable("ProductCategories", (string)null);
 
                     b.HasData(
                         new
                         {
                             ProductCategoryId = 1L,
-                            Name = "本"
+                            Name = "本",
+                            RowVersion = new byte[0]
                         },
                         new
                         {
                             ProductCategoryId = 2L,
-                            Name = "家電"
+                            Name = "家電",
+                            RowVersion = new byte[0]
                         },
                         new
                         {
                             ProductCategoryId = 3L,
-                            Name = "おもちゃ"
+                            Name = "おもちゃ",
+                            RowVersion = new byte[0]
                         });
                 });
 
@@ -148,8 +152,8 @@ namespace Infrastructure.Migrations
                     b.HasOne("ApplicationCore.Entity.ProductCategory", "ProductCategory")
                         .WithMany("Products")
                         .HasForeignKey("ProcuctCategoryId")
-                        .HasConstraintName("FK_Products_ProductCategories")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_Products_ProductCategories");
 
                     b.Navigation("ProductCategory");
                 });

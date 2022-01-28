@@ -1,35 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ApplicationCore.Entity;
+﻿using ApplicationCore.Entity;
 using ApplicationCore.Repositories;
 
-namespace Infrastructure.Ef
+namespace Infrastructure.Ef;
+
+public class ProductRepository : IProductRepository
 {
-    public class ProductRepository : IProductRepository
+    private readonly ProductDbContext context;
+
+    public ProductRepository(ProductDbContext context)
     {
-        private readonly ProductDbContext context;
+        this.context = context ?? throw new ArgumentNullException(nameof(context));
+    }
 
-        public ProductRepository(ProductDbContext context)
+    public IList<ProductCategory> GetAllCategories()
+    {
+        return this.context.ProductCategories.ToList();
+    }
+
+    public IList<Product> GetProducts(ProductCategory productCategory)
+    {
+        if (productCategory is null)
         {
-            this.context = context ?? throw new ArgumentNullException(nameof(context));
+            throw new ArgumentNullException(nameof(productCategory));
         }
 
-        public IList<ProductCategory> GetAllCategories()
-        {
-            return this.context.ProductCategories.ToList();
-        }
-
-        public IList<Product> GetProducts(ProductCategory productCategory)
-        {
-            if (productCategory is null)
-            {
-                throw new ArgumentNullException(nameof(productCategory));
-            }
-
-            return this.context.Products
-                .Where(p => p.ProcuctCategoryId == productCategory.ProductCategoryId)
-                .ToList();
-        }
+        return this.context.Products
+            .Where(p => p.ProcuctCategoryId == productCategory.ProductCategoryId)
+            .ToList();
     }
 }
