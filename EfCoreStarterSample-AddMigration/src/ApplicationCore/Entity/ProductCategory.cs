@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿namespace ApplicationCore.Entity;
 
-namespace ApplicationCore.Entity
+public class ProductCategory
 {
-    public class ProductCategory
-    {
-        public long ProductCategoryId { get; set; }
-        public string Name { get; set; }
-        public byte[] RowVersion { get; set; }
-        public IList<Product> Products { get; set; }
-    }
+    public long ProductCategoryId { get; set; }
+
+    public string Name { get; set; } = string.Empty;
+
+    public byte[] RowVersion { get; set; } = Array.Empty<byte>();
+
+    public IList<Product> Products { get; set; } = new List<Product>();
 }
