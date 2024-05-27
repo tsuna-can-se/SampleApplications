@@ -1,0 +1,17 @@
+﻿@using OptionsPattern.Web.Configurations
+@{
+    ViewData["Title"] = "Home Page";
+    var options = (OptionsPatternSettings)ViewBag.Options;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <p>
+        options.Setting1 : @options.Setting1
+    </p>
+    <p>
+        options.SubSettings.Level : @options.SubSettings.Level
+    </p>
+</div>
