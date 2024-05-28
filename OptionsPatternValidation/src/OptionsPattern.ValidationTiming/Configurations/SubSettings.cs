@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace OptionsPattern.Web.Configurations;
+namespace OptionsPattern.ValidationTiming.Configurations;
 
 public class SubSettings
 {

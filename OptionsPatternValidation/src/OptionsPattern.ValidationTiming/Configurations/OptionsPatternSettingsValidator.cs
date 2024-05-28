@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Options;
 
-namespace OptionsPattern.Web.Configurations;
+namespace OptionsPattern.ValidationTiming.Configurations;
 
 [OptionsValidator]
 public partial class OptionsPatternSettingsValidator : IValidateOptions<OptionsPatternSettings>

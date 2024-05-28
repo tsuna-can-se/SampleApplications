@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.Options;
 
-namespace OptionsPattern.Web.Configurations;
+namespace OptionsPattern.ValidationTiming.Configurations;
 
 public class OptionsPatternSettings
 {
