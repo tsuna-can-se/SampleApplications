@@ -1,4 +1,4 @@
-namespace OptionsPattern.ValidationTiming.Models;
+namespace OptionsPattern.Web.Models;
 
 public class ErrorViewModel
 {

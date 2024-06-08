@@ -1,15 +1,17 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using OptionsPattern.ValidationTiming.Configurations;
-using OptionsPattern.ValidationTiming.Models;
+using OptionsPattern.Web.Configurations;
+using OptionsPattern.Web.Models;
 
-namespace OptionsPattern.ValidationTiming.Controllers;
+namespace OptionsPattern.Web.Controllers;
 
 public class HomeController(IOptions<OptionsPatternSettings> options) : Controller
 {
     public IActionResult Index()
     {
+        // ASPNETCORE_ENVIRONMENT:SubSettingsIsFail3 または SettingItemIsFail のときは
+        // DIコンテナーから取得した IOptions<TOption> の Value を参照したときに検証が行われる。
         ViewBag.Options = options.Value;
         return View();
     }

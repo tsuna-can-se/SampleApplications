@@ -1,4 +1,4 @@
-﻿@using OptionsPattern.ValidationTiming.Configurations
+﻿@using OptionsPattern.Web.Configurations
 @{
     ViewData["Title"] = "Home Page";
     var options = (OptionsPatternSettings)ViewBag.Options;
@@ -8,10 +8,26 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
+</div>
+
+<div>
     <p>
         options.Setting1 : @options.Setting1
     </p>
     <p>
         options.SubSettings.Level : @options.SubSettings.Level
     </p>
+    <table class="table" style="width: 200px">
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+        @foreach (var settingItem in options.SettingItems)
+        {
+            <tr>
+                <td>@settingItem.Name</td>
+                <td>@settingItem.Value</td>
+            </tr>
+        }
+    </table>
 </div>
