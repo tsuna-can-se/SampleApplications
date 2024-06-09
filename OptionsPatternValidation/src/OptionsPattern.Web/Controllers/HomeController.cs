@@ -12,18 +12,18 @@ public class HomeController(IOptions<OptionsPatternSettings> options) : Controll
     {
         // ASPNETCORE_ENVIRONMENT:SubSettingsIsFail3 または SettingItemIsFail のときは
         // DIコンテナーから取得した IOptions<TOption> の Value を参照したときに検証が行われる。
-        ViewBag.Options = options.Value;
-        return View();
+        this.ViewBag.Options = options.Value;
+        return this.View();
     }
 
     public IActionResult Privacy()
     {
-        return View();
+        return this.View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return this.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
     }
 }
