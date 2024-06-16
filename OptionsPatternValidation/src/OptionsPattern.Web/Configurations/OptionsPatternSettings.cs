@@ -18,5 +18,5 @@ public class OptionsPatternSettings
     // ネスト下設定のクラスがリストや配列になる場合は、
     // 参照元のオプションのクラスに ValidateEnumeratedItems 属性をつける。
     [ValidateEnumeratedItems]
-    public IList<SettingItem> SettingItems { get; set; } = new List<SettingItem>();
+    public IList<SettingItem> SettingItems { get; set; } = [];
 }
