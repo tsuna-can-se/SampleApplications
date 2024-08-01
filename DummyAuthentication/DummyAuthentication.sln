@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{043D1AC0-8E6B-4ED0-80A9-2737537904F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyAuthentication.Web", "src\DummyAuthentication.Web\DummyAuthentication.Web.csproj", "{638F2EC9-4A86-46FF-AEA2-4AE711F2BF53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{638F2EC9-4A86-46FF-AEA2-4AE711F2BF53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{638F2EC9-4A86-46FF-AEA2-4AE711F2BF53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{638F2EC9-4A86-46FF-AEA2-4AE711F2BF53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{638F2EC9-4A86-46FF-AEA2-4AE711F2BF53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{638F2EC9-4A86-46FF-AEA2-4AE711F2BF53} = {043D1AC0-8E6B-4ED0-80A9-2737537904F0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19695B29-2837-4F21-8F83-D64CB537EAD3}
+	EndGlobalSection
+EndGlobal
