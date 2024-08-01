@@ -9,10 +9,14 @@ builder.Services.AddControllers();
 
 if (builder.Environment.IsDevelopment())
 {
-    // ダミーの認証ハンドラーを登録します。
+    // ローカル開発環境でのダミーの認証ハンドラーを登録します。
     builder.Services.AddAuthentication("DummyAuthentication")
         .AddScheme<AuthenticationSchemeOptions, DummyAuthenticationHandler>("DummyAuthentication", null);
     builder.Services.AddAuthorization();
+}
+else if (builder.Environment.IsProduction())
+{
+    // 本番環境での認証ハンドラーはここで登録します。
 }
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -31,10 +35,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // 認証ミドルウェアを追加します。
-if (app.Environment.IsDevelopment())
-{
-    app.UseAuthentication();
-}
+app.UseAuthentication();
 
 app.UseAuthorization();
 

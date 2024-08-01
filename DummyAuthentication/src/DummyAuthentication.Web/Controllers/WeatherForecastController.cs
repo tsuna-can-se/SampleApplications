@@ -24,9 +24,9 @@ public class WeatherForecastController : ControllerBase
     public IEnumerable<WeatherForecast> Get()
     {
         // 動作確認のため、ユーザーの情報をログに出力します。
-        this.logger.LogInformation($"Authenticated user:{this.User.Identity?.Name}");
-        this.logger.LogInformation($"User is authenticated:{this.User.Identity?.IsAuthenticated}");
-        this.logger.LogInformation($"Has \"Admin\" role:{this.User.IsInRole("Admin")}");
+        this.logger.LogInformation("Authenticated user:{UserName}", this.User.Identity?.Name);
+        this.logger.LogInformation("User is authenticated:{IsAuthenticated}", this.User.Identity?.IsAuthenticated);
+        this.logger.LogInformation("Has \"Admin\" role:{HasAdminRole}", this.User.IsInRole("Admin"));
 
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
