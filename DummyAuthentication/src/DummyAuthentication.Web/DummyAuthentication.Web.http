@@ -1,0 +1,6 @@
+@DummyAuthentication_Web_HostAddress = http://localhost:5201
+
+GET {{DummyAuthentication_Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
