@@ -12,7 +12,7 @@ using PkWithRecord.Data;
 namespace PkWithRecord.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    [Migration("20250114152410_InitialCreate")]
+    [Migration("20250119094714_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -28,7 +28,6 @@ namespace PkWithRecord.Migrations
             modelBuilder.Entity("PkWithRecord.Data.Product", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -36,7 +35,7 @@ namespace PkWithRecord.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 0)");
 
                     b.HasKey("Id");
 

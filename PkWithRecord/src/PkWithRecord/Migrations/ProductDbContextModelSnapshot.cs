@@ -25,7 +25,6 @@ namespace PkWithRecord.Migrations
             modelBuilder.Entity("PkWithRecord.Data.Product", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -33,7 +32,7 @@ namespace PkWithRecord.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 0)");
 
                     b.HasKey("Id");
 
