@@ -18,20 +18,20 @@ internal class ProductDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Product>()
-            .Property(p => p.Id)
-            .HasConversion(
-                id => id.Value,
-                value => new ProductId(value));
+        modelBuilder.Entity<Product>(product =>
+        {
+            product.Property(p => p.Id)
+                .HasConversion(
+                    id => id.Value,
+                    value => new ProductId(value));
+            product.Property(p => p.Price)
+                .HasColumnType("decimal(18, 0)");
+        });
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (optionsBuilder is null)
-        {
-            throw new ArgumentNullException(nameof(optionsBuilder));
-        }
-
+        ArgumentNullException.ThrowIfNull(optionsBuilder);
         if (!optionsBuilder.IsConfigured)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PkWithRecord;Integrated Security=True");
